@@ -6,11 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'; /* стили для таблиц
 // import App from "./components/App"; /* импорт компонента */
 import ReduxApp from "./App-redux";
 import { Provider } from "react-redux";
-import { createStore } from "redux"; /* импорт функции для создания Store */
+import { createStore, applyMiddleware  } from "redux"; /* импорт функции для создания Store */
 import reducer from "./reducers";
+import { logging } from "./middleware/logging"
 
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(logging));
 
 
 ReactDOM.render(

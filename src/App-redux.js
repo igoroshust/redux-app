@@ -38,7 +38,7 @@ export default connect(
     // mapDispatchToProps - возвращает объект методов
     dispatch => ({
         addElement: (elem) => {
-            dispatch({type: "WRITE", payload: elem})
+            dispatch({type: "ADD_LIBRARY", payload: elem})
         }
     })
 )(ReduxApp);
