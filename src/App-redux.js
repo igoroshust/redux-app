@@ -13,7 +13,7 @@ addLibrary() {
         console.log(this.props)
         return (
             <div>
-                <h3>Use DevTools (F12) to view the result</h3>
+                <h3>Use DevTools (F12) to view full details </h3>
                 <input type="type" ref={(input) => {this.inputValue = input}}/>
                 <button onClick={this.addLibrary.bind(this)}>Click me</button>
                 <ul>

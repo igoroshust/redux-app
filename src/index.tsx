@@ -6,12 +6,20 @@ import 'bootstrap/dist/css/bootstrap.min.css'; /* стили для таблиц
 // import App from "./components/App"; /* импорт компонента */
 import ReduxApp from "./App-redux";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware  } from "redux"; /* импорт функции для создания Store */
+import { createStore, applyMiddleware, compose } from "redux"; /* импорт функции для создания Store */
 import reducer from "./reducers";
-import { logging } from "./middleware/logging"
+import { logging } from "./middleware/logging";
 
+declare global {
+    interface Window {
+      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
 
-const store = createStore(reducer, applyMiddleware(logging));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, compose(applyMiddleware(logging),
+window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()));
 
 
 ReactDOM.render(
