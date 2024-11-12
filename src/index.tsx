@@ -7,26 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'; /* стили для таблиц
 import ReduxApp from "./App-redux";
 import { Provider } from "react-redux";
 import { createStore } from "redux"; /* импорт функции для создания Store */
+import reducer from "./reducers";
 
 
-const initialState = ["redux", "react"];
-const store = createStore(changeStore);
+const store = createStore(reducer);
 
-
-/* Пишем функцию-редьюсер (изменяющую состояние) */
-function changeStore (state = initialState, action) {
-    switch(action.type) {
-        case 'WRITE': {
-            return [
-                ...state,
-                action.payload
-            ]
-        }
-        break;
-        default:
-            return state;
-    }
-}
 
 ReactDOM.render(
 <Provider store={store}>

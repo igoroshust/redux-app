@@ -13,10 +13,11 @@ addLibrary() {
         console.log(this.props)
         return (
             <div>
+                <h3>Use DevTools (F12) to view the result</h3>
                 <input type="type" ref={(input) => {this.inputValue = input}}/>
                 <button onClick={this.addLibrary.bind(this)}>Click me</button>
                 <ul>
-                    {this.props.testStore.map(item =>
+                    {this.props.libraries.map(item =>
                         <li key={item}>{item}</li>
                     )}
                 </ul>
@@ -30,7 +31,8 @@ export default connect(
 
     // mapStateToProps - перебирает стейт и передает его в пропсы компонента, чтобы дальше с ним работать
     state => ({
-        testStore: state
+        libraries: state.libraries,
+        frameworks: state.frameworks
     }),
 
     // mapDispatchToProps - возвращает объект методов
